@@ -1,0 +1,190 @@
+<!--
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<title>Home page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			margin: 0;
+		}
+		header {
+			background-color: #fff;
+			padding: 20px;
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			position: sticky;
+			top: 0;
+			z-index: 1;
+		}
+		h1 {
+			margin: 0;
+			font-size: 24px;
+		}
+		nav {
+			display: flex;
+			align-items: center;
+		}
+		nav a {
+			color: #333;
+			text-decoration: none;
+			margin-left: 20px;
+			font-weight: bold;
+		}
+		nav a:hover {
+			color: #f44336;
+		}
+		.settings {
+			background-color: #f44336;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 5px;
+			font-weight: bold;
+			text-decoration: none;
+			margin-right: 20px;
+		}
+		.settings:hover {
+			background-color: #d32f2f;
+		}
+	</style>
+</head>
+
+
+
+<body>
+	<header>
+		<h1>My Burger restaurant site</h1>
+		<nav>
+			<a href="">Home</a>
+			<a href="restaurants/">Restaurants</a>
+		</nav>
+		<a href="settings/" class="settings">Settings</a>
+	</header>
+	<main>
+		<h2>Welcome on my Burger restaurant site</h2>
+		<p>Here you can find the best restaurants near you and customize your preferences.</p>
+		<p>Click on link <a href="restaurants/">Restaurants</a> to start your search.</p>
+	</main>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Burger restaurant site - {% block title %}Home{% endblock %}</title>
+	<style>
+		header {
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+			position: relative;
+		}
+		h1 {
+			margin: 0;
+		}
+		nav {
+			position: absolute;
+			top: 20px;
+			right: 20px;
+		}
+		nav a {
+			margin-left: 20px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		nav a:hover {
+			color: #666;
+		}
+		.settings {
+			position: absolute;
+			top: 20px;
+			left: 20px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		.settings:hover {
+			color: #666;
+		}
+        .admin {
+			position: absolute;
+			top: 20px;
+			left: 100px;
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 18px;
+		}
+		.admin:hover {
+            color: #666;
+        }
+
+		main {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			text-align: center;
+		}
+		h2 {
+			font-size: 36px;
+			margin-top: 0;
+		}
+		p {
+			font-size: 18px;
+			line-height: 1.5;
+		}
+		a {
+			color: #333;
+			text-decoration: none;
+			font-weight: bold;
+		}
+		a:hover {
+			color: #666;
+		}
+	</style>
+</head>
+<body>
+	<header>
+
+		<h1>My Burger restaurant site</h1>
+        {% if user.is_authenticated %}
+		<nav>
+			<a href="">Home</a>
+			<a href="restaurants/">Restaurants</a>
+		</nav>
+
+		<a href="settings/" class="settings">Settings</a>
+            {% if user.is_authenticated == user.is_staff %}
+                <a href="admin/" class="admin">Admin</a>
+            {% endif %}
+
+        {% endif %}
+	</header>
+	<main>
+		<h2>Welcome on my Burger restaurant site</h2>
+		<p>Here you can find the best restaurants near you and customize your preferences.</p>
+    {% if user.is_authenticated %}
+		<p>Click on link <a href="restaurants/">Restaurants</a> to start your search.</p>
+    {% endif %}
+
+		{% if user.is_authenticated %}
+		  <p>Hi {{ user.username }}!</p>
+		  <p><a href="{% url 'logout' %}">Log Out</a></p>
+		  <p><a href="{% url 'password_reset' %}">Reset Password</a></p>
+		{% else %}
+		  <p>You are not logged in</p>
+		  <p><a href="{% url 'login' %}">Log In</a></p>
+		{% endif %}
+	</main>
+</body>
+</html>
+

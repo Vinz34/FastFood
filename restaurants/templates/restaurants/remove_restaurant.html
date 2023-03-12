@@ -1,0 +1,9 @@
+<h1>Delete Restaurant</h1>
+
+<p>Are you sure you want to delete the restaurant : {{ restaurant.restaurant_name }} ?</p>
+
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" value="Send">
+  <a href="../../" >No</a>
+</form>

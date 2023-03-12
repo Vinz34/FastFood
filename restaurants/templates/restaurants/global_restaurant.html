@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant List</title>
+  <style>
+    /* Style the buttons */
+    .btn {
+      background-color: #4CAF50; /* Green */
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    /* Change the background color of the delete button */
+    .btn-delete {
+      background-color: #f44336; /* Red */
+    }
+
+    /* Change the background color of the update button */
+    .btn-update {
+      background-color: #008CBA; /* Blue */
+    }
+
+    /* Style the list */
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Style the list items */
+    li {
+      margin: 10px 0;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+
+    /* Style the heading */
+    h1 {
+      font-size: 32px;
+      text-align: center;
+    }
+
+    /* Style the section headings */
+    h2 {
+      font-size: 24px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    /* Style the open and closed sections */
+    .open-section, .closed-section {
+      width: 50%;
+      margin: 0 auto;
+    }
+
+    /* Style the back button */
+    .back-btn {
+      display: block;
+      margin: 20px auto 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Restaurant List</h1>
+
+  <h2>Open Restaurants</h2>
+  <div class="open-section">
+    <ul>
+      {% for restaurant in restaurants %}
+          {% if restaurant.open %}
+        <li>
+          <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
+          <a href="{{ restaurant.id }}/remove_restaurant/" >Delete Restaurant</a>
+          <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
+        </li>
+          {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <h2>Closed Restaurants</h2>
+  <div class="closed-section">
+    <ul>
+      {% for restaurant in restaurants %}
+        {% if not restaurant.open %}
+        <li>
+          <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
+          <a href="{{ restaurant.id }}/remove_restaurant/" >Delete restaurant</a>
+          <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
+        </li>
+          {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  <a href="../" class="back-btn">Back</a>
+    <a href="../settings/add_restaurant/">Create Restaurant.</a>
+</body>
+</html>

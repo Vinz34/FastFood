@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Create a new restaurant</title>
+	<style>
+		label {
+			display: block;
+			margin-bottom: 10px;
+		}
+		input[type="text"] {
+			padding: 5px;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+			width: 100%;
+			box-sizing: border-box;
+			margin-bottom: 20px;
+		}
+		input[type="checkbox"] {
+			margin-right: 10px;
+		}
+		button[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 16px;
+		}
+		button[type="submit"]:hover {
+			background-color: #3e8e41;
+		}
+	</style>
+</head>
+<body>
+	<h1>Create a new restaurant</h1>
+	<form action="" method="post" novalidate>
+            <p>{{ error }}</p>
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input class="button_input" href="../" type="submit" value="Add restaurant">
+    </form>
+    <br>
+<a href="../">Back</a>
+
+</body>
+</html>
