@@ -3,7 +3,7 @@
 Burger Site is a website where users can create their own restaurants and burgers. To get started, users must first access the settings page where they can select "Create Restaurant" or "Create Burger".
 
 
-**Getting Started****
+**Getting Started**
 
 To use Burger Site, start by accessing the settings page where you can choose to create a restaurant or burger. You will be taken to a form where you can enter information about your restaurant or burger, such as the name, description, and price.
 
