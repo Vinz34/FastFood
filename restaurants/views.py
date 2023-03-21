@@ -7,6 +7,7 @@ from django.urls import reverse
 from django.shortcuts import render
 from restaurants.forms import BurgerForm, RestaurantForm
 
+
 from django.http import HttpResponse
 from django.template import loader
 

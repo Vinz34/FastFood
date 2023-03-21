@@ -70,34 +70,37 @@
 </head>
 <body>
   <h1>Restaurant List</h1>
+    {% if restaurants %}
+      <h2>Open Restaurants</h2>
+      <div class="open-section">
+        <ul>
+          {% for restaurant in restaurants %}
+              {% if restaurant.open %}
+            <li>
+              <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
+              <a href="{{ restaurant.id }}/remove_restaurant/" >Delete Restaurant</a>
+              <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
+            </li>
+              {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
 
-  <h2>Open Restaurants</h2>
-  <div class="open-section">
-    <ul>
-      {% for restaurant in restaurants %}
-          {% if restaurant.open %}
-        <li>
-          <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
-          <a href="{{ restaurant.id }}/remove_restaurant/" >Delete Restaurant</a>
-          <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
-        </li>
-          {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-
-  <h2>Closed Restaurants</h2>
-  <div class="closed-section">
-    <ul>
-      {% for restaurant in restaurants %}
-        {% if not restaurant.open %}
-        <li>
-          <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
-          <a href="{{ restaurant.id }}/remove_restaurant/" >Delete restaurant</a>
-          <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
-        </li>
-          {% endif %}
-      {% endfor %}
+      <h2>Closed Restaurants</h2>
+      <div class="closed-section">
+        <ul>
+          {% for restaurant in restaurants %}
+            {% if not restaurant.open %}
+            <li>
+              <a href="{{ restaurant.id }}/">{{ restaurant.restaurant_name }}</a>
+              <a href="{{ restaurant.id }}/remove_restaurant/" >Delete restaurant</a>
+              <a href="{{ restaurant.id }}/update_restaurant/" >Update restaurant</a>
+            </li>
+              {% endif %}
+          {% endfor %}
+    {% else %}
+        <p>No restaurants are available.</p>
+    {% endif %}
     </ul>
   </div>
 

@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-import secrets
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,11 +20,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = secrets.token_urlsafe(38)
+SECRET_KEY = 'django-insecure-4tcbd+(^2e!*f4-_r7ogq#7=le%0^wcc5ptucm1wr^=i-!+89n'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-
-# I let the Debug on True because it bugs otherwise
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -140,14 +137,3 @@ LOGOUT_REDIRECT_URL = "home_page"
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 
-# Needs certificate to work
-"""
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE = True
-CSRF_COOKIE_SECURE = True
-SESSION_COOKIE_SECURE = True
-
-SECURE_HSTS_SECONDS = 2592000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-"""

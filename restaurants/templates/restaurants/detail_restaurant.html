@@ -43,38 +43,41 @@
 </head>
 <body>
 	<h1>Burgers at Restaurant - {{restaurant.restaurant_name}}</h1>
-	<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Description</th>
-            <th>Actions</th>
+    {% if burgers %}
+        <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
 
-        </tr>
-    </thead>
-    <tbody>
-        {% for burger in burgers %}
-        <tr>
-        {% if burger.restaurant == restaurant %}
-            {% if burger.vegetarian %}
-            <td>{{ burger.name }} <img src="../../static/vege-logo.jpg", width="25", height="25"></td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for burger in burgers %}
+            <tr>
+            {% if burger.restaurant == restaurant %}
+                {% if burger.vegetarian %}
+                <td>{{ burger.name }} <img src="../../static/vege-logo.jpg", width="25", height="25"></td>
 
-            {% else %}
-            <td>{{ burger.name }}
+                {% else %}
+                <td>{{ burger.name }}
+                {% endif %}
+                <td>{{ burger.price }}€</td>
+
+                <td>{{ burger.description }}</td>
+                <td>
+                    <a href="remove_burger/{{ burger.id }}" >Delete Burger</a>
+                    <a href="update_burger/{{ burger.id }}" >Update Burger</a>
+                </td>
+
             {% endif %}
-            <td>{{ burger.price }}€</td>
-
-            <td>{{ burger.description }}</td>
-            <td>
-                <a href="remove_burger/{{ burger.id }}" >Delete Burger</a>
-                <a href="update_burger/{{ burger.id }}" >Update Burger</a>
-            </td>
-
-        {% endif %}
-        </tr>
-        {% endfor %}
-
+            </tr>
+            {% endfor %}
+    {% else %}
+        <p>No burgers are available.</p>
+    {% endif %}
     </tbody>
 
 </table>
